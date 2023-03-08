@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
 
     socket.to(room).emit('receive_message', {
       message: `${username} has joined`,
-      username: 'bot',
+      username: 'Bot',
       currentTime,
     })
 
@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
 
     socket.emit('receive_message', {
       message: `Welcome ${username}`,
-      username: 'bot',
+      username: 'Bot',
       currentTime,
     })
     chatRoom = room

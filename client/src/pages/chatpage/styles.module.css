@@ -22,15 +22,18 @@
     border: 1px solid rgb(153, 217, 234);
     font-size: 0.9rem;
   }
-  .message {
+  .messages {
   overflow: auto;
+  margin-top: 50px;
   width: 350px;
   padding: 10px 10px 10px 40px;
   height: 85vh;
   }
+  .message {}
   .chatText {
   background: rgb(0, 24, 111);
   border-radius: 6px;
+  
   margin-bottom: 24px;
   max-width: 500px;
   padding: 12px;

@@ -18,16 +18,16 @@ const Messages = ({socket}) => {
         })
         return () => socket.off('receive_message')
     },[socket])
-    console.log(messages)
+    
 
     const formatTime = (time) => {
         const date = new Date(time)
         return date.toLocaleString()
     }
     return (
-        <div className={styles.message}>
+        <div className={styles.messages}>
         {messages.map((msg, i) => (
-          <div key={i}>
+          <div className={styles.message} key={i}>
             <div className={styles.chatText}>
               <span className={styles.userName}>{msg.username}</span>
               <p className={styles.messageText}>{msg.message}</p>
