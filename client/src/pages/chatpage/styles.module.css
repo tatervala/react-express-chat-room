@@ -1,10 +1,11 @@
 .chatContainer {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    gap: 20px;
-  }
+  max-width: 500px;
+  
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+}
   .sendMessageContainer {
     padding: 16px 20px 20px 16px;
     position: absolute;
@@ -20,4 +21,32 @@
     border-radius: 6px;
     border: 1px solid rgb(153, 217, 234);
     font-size: 0.9rem;
+  }
+  .message {
+  overflow: auto;
+  width: 350px;
+  padding: 10px 10px 10px 40px;
+  height: 85vh;
+  }
+  .chatText {
+  background: rgb(0, 24, 111);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  max-width: 500px;
+  padding: 12px;
+  }
+  .messageText {
+    color: rgb(153, 217, 234)
+  }
+  .userName {
+    color: white;
+    font-size: 15px;
+  }
+  .date {
+    color: white;
+    font-size: 10px;
+  }
+  .separator {
+    font-size: 8px;
+    color: white
   }

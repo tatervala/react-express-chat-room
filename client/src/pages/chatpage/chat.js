@@ -6,12 +6,11 @@ const Messages = ({socket}) => {
 
     useEffect(() => {
         socket.on('receive_message', (data) => {
-            console.log(data)
             setMessages((state) => [
                 ...state,
                 {
                     message: data.message,
-                    user: data.user,
+                    username: data.username,
                     currentTime: data.currentTime
                 },
               
@@ -23,23 +22,24 @@ const Messages = ({socket}) => {
 
     const formatTime = (time) => {
         const date = new Date(time)
-        return date.toLocaleDateString()
+        return date.toLocaleString()
     }
     return (
-      <div className={styles.messagesColumn}>
-      {messages.map((msg, i) => (
-        <div className={styles.message} key={i}>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span className={styles.msgMeta}>{msg.username}</span>
-            <span className={styles.msgMeta}>
-              {formatTime(msg.__createdtime__)}
-            </span>
+        <div className={styles.message}>
+        {messages.map((msg, i) => (
+          <div key={i}>
+            <div className={styles.chatText}>
+              <span className={styles.userName}>{msg.username}</span>
+              <p className={styles.messageText}>{msg.message}</p>
+              <span className={styles.date}>
+                {formatTime(msg.currentTime)}
+              </span>
+            </div>
+            <br />
           </div>
-          <p className={styles.msgText}>{msg.message}</p>
-          <br />
-        </div>
-      ))}
-    </div>
-      )
+        ))}
+      </div>
+    
+    )
 }
 export default Messages
