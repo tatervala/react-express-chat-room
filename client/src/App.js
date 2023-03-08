@@ -6,7 +6,11 @@ import JoinPage from './pages/joinpage'
 import Chats from './pages/chatpage'
 import NaviBar from './components/Header'
 
-const socket = io.connect('http://localhost:4000/') // socket server
+
+let URI
+process.env.REACT_APP_STATUS === 'development' ? (URI = process.env.REACT_APP_DEV_URI) :
+ (URI = process.env.REACT_APP_PROD_URI)
+const socket = io.connect(URI) // socket server
 
 
 function App() {
