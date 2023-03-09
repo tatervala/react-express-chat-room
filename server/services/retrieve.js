@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
-import axios from "axios";
+import * as dotenv from 'dotenv'
+dotenv.config()
 import messageSchema from "./model.js";
 
 function getMessages() {
-    const password = 'w1QnK6HBnqoEaDFY'
-    const dburl = `mongodb+srv://test:${password}@cluster0.aeigqo4.mongodb.net/?retryWrites=true&w=majority`
+    const mongoUrl = process.env.url
+    const dburl = mongoUrl
     if (!dburl) return null
     mongoose.connect(dburl)
     let Message = mongoose.model('Message', messageSchema)

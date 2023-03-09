@@ -25,9 +25,9 @@ const Messages = ({socket}) => {
       
       socket.on('display_from_db', (displaymessages) => {
       console.log(displaymessages)
-      displaymessages.currentTime.forEach(function(message){
-        console.log(message)
-    })
+    //   displaymessages.currentTime.forEach(function(message){
+    //     console.log(message)
+    // })
       // displaymessages = sortByDate(displaymessages)
       setMessages((state) => [...displaymessages, ...state])
       })
