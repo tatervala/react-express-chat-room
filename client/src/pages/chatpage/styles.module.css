@@ -8,12 +8,14 @@
 }
   .sendMessageContainer {
     padding: 16px 20px 20px 16px;
-    position: absolute;
+    position: relative;
+    border: 1px solid rgb(153, 217, 234);
     bottom: 0;
   }
   .messageInput {
     position: relative;
     bottom: 0;
+    
     margin-bottom: 5px;
     padding: 14px;
     margin-right: 16px;
@@ -29,7 +31,6 @@
   padding: 10px 10px 10px 40px;
   height: 85vh;
   }
-  .message {}
   .chatText {
   background: rgb(0, 24, 111);
   border-radius: 6px;

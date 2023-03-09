@@ -1,10 +1,12 @@
 import express from 'express'
 const app = express()
+
+
 import http from 'http'
 import cors from 'cors'
 import {Server} from 'socket.io'
-
-
+import saveMessage from './services/mongo.js'
+import getMessages from './services/retrieve.js'
 app.use(cors())
 
 const server = http.createServer(app)
@@ -47,17 +49,25 @@ io.on('connection', (socket) => {
       username: 'Bot',
       currentTime,
     })
+
+    /* get the last sent messages from mongodb */
+
+    getMessages().then((displaymessages) => {
+      socket.emit('display_from_db',displaymessages)
+    })
+
     chatRoom = room
     allUsers.push({ id: socket.id, username, room })  
     currentUsers= allUsers.filter((user) => user.room === room) // filter users only to current room
     socket.to(room).emit('chatroom_users', currentUsers)
     socket.emit('chatroom_users', currentUsers)
   })
+
   /* send message to every user on the room */
   socket.on('send_message', (data) => {
     const { message, username, room, currentTime} = data
-    
     io.in(room).emit('receive_message', data)
+    saveMessage(message, username, room, currentTime)
   })
   
 
